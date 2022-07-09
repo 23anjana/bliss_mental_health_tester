@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "481257402035",
+    "project_id": "ment-track",
+    "storage_bucket": "ment-track.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481257402035:android:5a8912745e1ef844320ac6",
+        "android_client_info": {
+          "package_name": "com.miniapp.ment_track"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481257402035-46gtsilauh9gh1p5kld1iirq8luc52cj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.miniapp.ment_track",
+            "certificate_hash": "72232c5ebfbfe0aa052f0929cae04454622ed944"
+          }
+        },
+        {
+          "client_id": "481257402035-9n7gnie6p6te75e1jcsnrot3a1m5v2gk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj3zH_E9hs6kyAdUgpnhUD3dwPwo6s2Vo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481257402035-9n7gnie6p6te75e1jcsnrot3a1m5v2gk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
