@@ -1,20 +1,19 @@
 import 'package:ment_track/pages/auth/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:auth_buttons/auth_buttons.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:ment_track/Pages/auth/login.dart';
 
 import '../home.dart';
 
-class LoginPage extends StatefulWidget {
-  LoginPage({Key? key}) : super(key: key);
+class SignupPage extends StatefulWidget {
+  SignupPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final _emailController = TextEditingController();
@@ -56,6 +55,7 @@ class _LoginPageState extends State<LoginPage> {
           Positioned.fill(
             child: ListView(
               children: [
+                SizedBox(height: 100),
                 SizedBox(
                   width: 150,
                   height: 150,
@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Center(
                   child: Text(
-                    "Login",
+                    "Create account",
                     style: Theme.of(context).textTheme.headline6,
                   ),
                 ),
@@ -110,88 +110,20 @@ class _LoginPageState extends State<LoginPage> {
                             return null;
                           },
                         ),
-                        const SizedBox(height: 8),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            TextButton(
-                                onPressed: () {},
-                                child: Text("Forgot Password?")),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: ElevatedButton(
-                                child: Text("Login"),
-                                onPressed: () async {
-                                  if (_formKey.currentState!.validate()) {
-                                    try {
-                                      UserCredential userCredential =
-                                          await FirebaseAuth.instance
-                                              .signInWithEmailAndPassword(
-                                        email: _emailController.text,
-                                        password: _passwordController.text,
-                                      );
-                                      if (userCredential.user != null) {
-                                        Navigator.of(context).pushReplacement(
-                                          PageRouteBuilder(
-                                            pageBuilder: (context, animation,
-                                                    secondaryAnimation) =>
-                                                HomePage(),
-                                            transitionsBuilder: (context,
-                                                    animation,
-                                                    secondaryAnimation,
-                                                    child) =>
-                                                FadeTransition(
-                                              opacity: animation,
-                                              child: child,
-                                            ),
-                                          ),
-                                        );
-
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(SnackBar(
-                                          content: Text("Login Successful"),
-                                        ));
-                                      }
-                                    } catch (e) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text("Login Failed"),
-                                        ),
-                                      );
-                                    }
-                                  }
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
                         const SizedBox(height: 16),
                         Row(
                           children: [
                             Expanded(
-                              child: GoogleAuthButton(
+                              child: ElevatedButton(
+                                child: Text("Sign up"),
                                 onPressed: () async {
-                                  GoogleSignIn _googleSignIn = GoogleSignIn(
-                                    scopes: <String>['email'],
-                                  );
-                                  try {
-                                    GoogleSignInAccount? googleUser =
-                                        await _googleSignIn.signIn();
-                                    if (googleUser != null) {
-                                      GoogleSignInAuthentication googleAuth =
-                                          await googleUser.authentication;
-                                      AuthCredential credential =
-                                          GoogleAuthProvider.credential(
-                                        idToken: googleAuth.idToken,
-                                        accessToken: googleAuth.accessToken,
-                                      );
-
+                                  if (_formKey.currentState!.validate()) {
+                                    try {
                                       await FirebaseAuth.instance
-                                          .signInWithCredential(credential);
+                                          .createUserWithEmailAndPassword(
+                                        email: _emailController.text,
+                                        password: _passwordController.text,
+                                      );
                                       Navigator.of(context).pushReplacement(
                                         PageRouteBuilder(
                                           pageBuilder: (context, animation,
@@ -209,21 +141,18 @@ class _LoginPageState extends State<LoginPage> {
                                       );
 
                                       ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text("Login Successful"),
-                                        ),
-                                      );
+                                          .showSnackBar(SnackBar(
+                                        content: Text("Account created"),
+                                      ));
+                                    } catch (e) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                        content:
+                                            Text("Account creation failed"),
+                                      ));
                                     }
-                                  } catch (e) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text("Login Failed"),
-                                      ),
-                                    );
                                   }
                                 },
-                                darkMode: false,
                               ),
                             ),
                           ],
@@ -241,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                           PageRouteBuilder(
                             pageBuilder:
                                 (context, animation, secondaryAnimation) =>
-                                    SignupPage(),
+                                    LoginPage(),
                             transitionsBuilder: (context, animation,
                                     secondaryAnimation, child) =>
                                 FadeTransition(
@@ -251,7 +180,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         );
                       },
-                      child: Text("Don't have an account? Sign up"),
+                      child: Text("Already have an account?"),
                     ),
                   ],
                 ),
@@ -260,5 +189,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ],
       ),
-      );  }
+    );
+  }
 }
