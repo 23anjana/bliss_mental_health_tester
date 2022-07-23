@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:auth_buttons/auth_buttons.dart';
 import 'package:ment_track/Pages/auth/login.dart';
-
+import 'package:ment_track/colors.dart';
 import '../home.dart';
 
 class SignupPage extends StatefulWidget {
@@ -35,7 +35,7 @@ class _SignupPageState extends State<SignupPage> {
               width: 150,
               height: 150,
               decoration: BoxDecoration(
-                color: Colors.green[100],
+                color: Colors.purple[100],
                 shape: BoxShape.circle,
               ),
             ),
@@ -47,7 +47,7 @@ class _SignupPageState extends State<SignupPage> {
               width: 150,
               height: 150,
               decoration: BoxDecoration(
-                color: Colors.green[100],
+                color: Colors.purple[100],
                 shape: BoxShape.circle,
               ),
             ),
@@ -55,22 +55,19 @@ class _SignupPageState extends State<SignupPage> {
           Positioned.fill(
             child: ListView(
               children: [
-                SizedBox(height: 100),
-                SizedBox(
-                  width: 150,
-                  height: 150,
-                  child: Image.asset("assets/app_logo.png"),
-                ),
-                Center(
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                  padding: const EdgeInsets.only(top: 50.0, left: 5.0),
                   child: Text(
-                    "Create account",
-                    style: Theme.of(context).textTheme.headline6,
+                    "Register",
+                    style: TextStyle(fontFamily: 'Schyler', fontSize: 55, fontWeight: FontWeight.w600),
                   ),
-                ),
+                )),
                 Form(
                   key: _formKey,
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: [
                         const SizedBox(height: 16),
@@ -80,7 +77,9 @@ class _SignupPageState extends State<SignupPage> {
                               filled: true,
                               hintText: "Email",
                               labelText: "Email",
-                              border: InputBorder.none,
+                              enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(width: 3, color: primaryBlack),
+      ),
                             ),
                             keyboardType: TextInputType.emailAddress,
                             validator: (value) {
@@ -100,7 +99,9 @@ class _SignupPageState extends State<SignupPage> {
                             filled: true,
                             hintText: "Password",
                             labelText: "Password",
-                            border: InputBorder.none,
+                            enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(width: 3, color: primaryBlack),
+      ),
                           ),
                           obscureText: true,
                           validator: (value) {

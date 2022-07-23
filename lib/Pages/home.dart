@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+import 'package:ment_track/controllers/surveycontroller.dart';
 import 'package:ment_track/pages/onboarding.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List SurveyImages = ["Mind","Progress","Meditation","Survey","Mind"];
+  List SurveyImages = ["Progress","Progress","Progress","Progress","Progress"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,17 +34,24 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   SurveySearchView(),
-                  Container(
-                      padding:  EdgeInsets.symmetric(horizontal: 16),
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: 5,
-                        itemBuilder: (_, index) => SurveyCategoryCard(
-                          image: SurveyImages[index % (SurveyImages.length)],
-                        ),
-                      ),
-                    ),
+                  Obx(
+                    ()
+                    {
+                      var categories = Get.find<SurveyController>().categories;
+                      return Container(
+                          padding:  EdgeInsets.symmetric(horizontal: 16),
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: categories.length,
+                            itemBuilder: (_, index) => SurveyCategoryCard(
+                              categories[index],
+                              image: SurveyImages[index % (SurveyImages.length)],
+                            ),
+                          ),
+                        );
+                    }
+                  ),
                 ],
               ),
             ),

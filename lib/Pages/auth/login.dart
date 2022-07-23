@@ -1,3 +1,4 @@
+import 'package:ment_track/colors.dart';
 import 'package:ment_track/pages/auth/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -36,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
               width: 150,
               height: 150,
               decoration: BoxDecoration(
-                color: Colors.green[100],
+                color: Colors.purple[100],
                 shape: BoxShape.circle,
               ),
             ),
@@ -48,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
               width: 150,
               height: 150,
               decoration: BoxDecoration(
-                color: Colors.green[100],
+                color: Colors.purple[100],
                 shape: BoxShape.circle,
               ),
             ),
@@ -56,21 +57,19 @@ class _LoginPageState extends State<LoginPage> {
           Positioned.fill(
             child: ListView(
               children: [
-                SizedBox(
-                  width: 150,
-                  height: 150,
-                  child: Image.asset("assets/app_logo.png"),
-                ),
-                Center(
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                  padding: const EdgeInsets.only(top: 50.0, left: 5.0),
                   child: Text(
-                    "Login",
-                    style: Theme.of(context).textTheme.headline6,
+                    "Log in",
+                    style: TextStyle(fontFamily: 'Schyler', fontSize: 55, fontWeight: FontWeight.w600),
                   ),
-                ),
+                )),
                 Form(
                   key: _formKey,
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: [
                         const SizedBox(height: 16),
@@ -80,12 +79,14 @@ class _LoginPageState extends State<LoginPage> {
                               filled: true,
                               hintText: "Email",
                               labelText: "Email",
-                              border: InputBorder.none,
+                              enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(width: 3, color: primaryBlack),
+      ),
                             ),
                             keyboardType: TextInputType.emailAddress,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Please enter some text';
+                                return 'Please enter the email address';
                               }
 
                               if (RegExp(
@@ -100,12 +101,13 @@ class _LoginPageState extends State<LoginPage> {
                             filled: true,
                             hintText: "Password",
                             labelText: "Password",
-                            border: InputBorder.none,
+                            enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(width: 3, color: primaryBlack)),
                           ),
                           obscureText: true,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Please enter some text';
+                              return 'Please enter the password';
                             }
                             return null;
                           },
@@ -123,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                           children: [
                             Expanded(
                               child: ElevatedButton(
-                                child: Text("Login"),
+                                child: Text("LOG IN",style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                                 onPressed: () async {
                                   if (_formKey.currentState!.validate()) {
                                     try {
@@ -169,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 36),
                         Row(
                           children: [
                             Expanded(
@@ -260,5 +262,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ],
       ),
-      );  }
+      ); 
+       }
 }

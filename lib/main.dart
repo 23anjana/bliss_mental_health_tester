@@ -1,9 +1,12 @@
+import 'package:ment_track/di.dart';
 import 'package:ment_track/pages/home.dart';
 import 'package:ment_track/pages/onboarding.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'colors.dart';
 void main() {
+  configure();
   runApp(const MyApp());
 }
 
@@ -13,10 +16,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp( 
-      title: 'Ment_Track',
+      title: 'Bliss',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: primaryBlack,
       ),
       home: FutureBuilder(
         future: Firebase.initializeApp(),

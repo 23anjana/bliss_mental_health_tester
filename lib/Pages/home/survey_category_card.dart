@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:ment_track/Pages/home/survey_page.dart';
+import 'package:ment_track/controllers/surveycontroller.dart';
+import 'package:ment_track/models/survey_category.dart';
 
 class SurveyCategoryCard extends StatelessWidget {
   final image;
-  const SurveyCategoryCard({
+  final SurveyCategory category;
+  const SurveyCategoryCard(
+    this.category,{
     Key? key, 
     required this.image,
   }) : super(key: key);
@@ -12,6 +18,7 @@ class SurveyCategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        Get.find<SurveyController>().loadQuestions(category);
         Navigator.of(context).push(PageRouteBuilder(pageBuilder: (_,anim,anim2) => FadeTransition(
           opacity: anim,
           child: SurveyPage(),
@@ -54,7 +61,7 @@ class SurveyCategoryCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Depression",
+                        category.name!,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -69,7 +76,7 @@ class SurveyCategoryCard extends StatelessWidget {
                         ),
                         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                         child: Text(
-                          "Start Test",
+                          category.difficulity!,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,

@@ -6,7 +6,7 @@ class SurveySearchView extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: TextField(

@@ -12,30 +12,37 @@ class OnboardingPage extends StatefulWidget {
 class _OnboardingPageState extends State<OnboardingPage> {
   final pages = [
     PageModel(
-        color: Colors.black,
-        imageAssetPath: 'assets/Mind.png',
-        title: 'Screen 1',
-        body: 'Share your ideas with the team',
+        color: Color.fromARGB(255, 255, 255, 255),
+        imageAssetPath: 'assets/screen1.png',
+        title: 'Measure and improve',
+        titleColor: Color.fromARGB(255, 0, 0, 0),
+        bodyColor: Color.fromARGB(255, 0, 0, 0),
+        body: 'your mental health',
         doAnimateImage: true),
     PageModel(
-        color: Colors.green,
-        imageAssetPath: 'assets/Survey.png',
-        title: 'Screen 2',
-        body: 'See the increase in productivity & output',
+        color: Color.fromARGB(255, 255, 255, 255),
+        imageAssetPath: 'assets/screen2.png',
+        title: 'Personalised insights',
+        titleColor: Color.fromARGB(255, 0, 0, 0),
+        bodyColor: Color.fromARGB(255, 0, 0, 0),
+        body: 'and scientific assessments',
         doAnimateImage: true),
     PageModel(
-        color: Colors.purple,
-        imageAssetPath: 'assets/Progress.png',
-        title: 'Screen 3',
-        body: 'Connect with the people from different places',
+        color: Color.fromARGB(255, 255, 255, 255),
+        imageAssetPath: 'assets/screen3.png',
+        title: 'Bite-sized tools',
+        body: 'developed by experts',
+        titleColor: Color.fromARGB(255, 0, 0, 0),
+        bodyColor: Color.fromARGB(255, 0, 0, 0),
         doAnimateImage: true),
-    PageModel.withChild(
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 25.0),
-          child: Image.asset('assets/Meditation.png', width: 300.0, height: 300.0),
-        ),
-        color: Colors.black,
-        doAnimateChild: false)
+    PageModel(
+        color: Color.fromARGB(255, 255, 255, 255),
+        imageAssetPath: 'assets/screen4.png',
+        title: '100% confidential',
+        body: 'for your personal privacy',
+        titleColor: Color.fromARGB(255, 0, 0, 0),
+        bodyColor: Color.fromARGB(255, 0, 0, 0),
+        doAnimateImage: true)
   ];
   @override
   Widget build(BuildContext context) {
@@ -43,6 +50,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
       body: OverBoard(
         pages: pages,
         showBullets: true,
+        activeBulletColor: Color.fromARGB(255, 0, 0, 0),
+        inactiveBulletColor: Color.fromARGB(77, 67, 57, 57),
+        buttonColor: Color.fromARGB(255, 0, 0, 0),
         skipCallback: () {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
