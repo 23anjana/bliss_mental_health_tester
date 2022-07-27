@@ -12,36 +12,36 @@ class OnboardingPage extends StatefulWidget {
 class _OnboardingPageState extends State<OnboardingPage> {
   final pages = [
     PageModel(
-        color: Color.fromARGB(255, 255, 255, 255),
-        imageAssetPath: 'assets/screen1.png',
+        color: Color.fromARGB(255, 242, 197, 103),
+        imageAssetPath: 'assets/screen1c.png',
         title: 'Measure and improve',
-        titleColor: Color.fromARGB(255, 0, 0, 0),
-        bodyColor: Color.fromARGB(255, 0, 0, 0),
+        titleColor: Color.fromARGB(255, 255, 255, 255),
+        bodyColor: Color.fromARGB(255, 255, 255, 255),
         body: 'your mental health',
         doAnimateImage: true),
     PageModel(
-        color: Color.fromARGB(255, 255, 255, 255),
-        imageAssetPath: 'assets/screen2.png',
+        color: Color.fromARGB(255, 243, 165, 165),
+        imageAssetPath: 'assets/screen2c.png',
         title: 'Personalised insights',
-        titleColor: Color.fromARGB(255, 0, 0, 0),
-        bodyColor: Color.fromARGB(255, 0, 0, 0),
+        titleColor: Color.fromARGB(255, 255, 255, 255),
+        bodyColor: Color.fromARGB(255, 255, 255, 255),
         body: 'and scientific assessments',
         doAnimateImage: true),
     PageModel(
-        color: Color.fromARGB(255, 255, 255, 255),
-        imageAssetPath: 'assets/screen3.png',
+        color: Color.fromARGB(255, 84, 120, 240),
+        imageAssetPath: 'assets/screen3c.png',
         title: 'Bite-sized tools',
         body: 'developed by experts',
-        titleColor: Color.fromARGB(255, 0, 0, 0),
-        bodyColor: Color.fromARGB(255, 0, 0, 0),
+        titleColor: Color.fromARGB(255, 255, 255, 255),
+        bodyColor: Color.fromARGB(255, 255, 255, 255),
         doAnimateImage: true),
     PageModel(
-        color: Color.fromARGB(255, 255, 255, 255),
-        imageAssetPath: 'assets/screen4.png',
+        color: Color.fromARGB(255, 30, 47, 55),
+        imageAssetPath: 'assets/screen4c.png',
         title: '100% confidential',
         body: 'for your personal privacy',
-        titleColor: Color.fromARGB(255, 0, 0, 0),
-        bodyColor: Color.fromARGB(255, 0, 0, 0),
+        titleColor: Color.fromARGB(255, 255, 255, 255),
+        bodyColor: Color.fromARGB(255, 255, 255, 255),
         doAnimateImage: true)
   ];
   @override
@@ -50,9 +50,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
       body: OverBoard(
         pages: pages,
         showBullets: true,
-        activeBulletColor: Color.fromARGB(255, 0, 0, 0),
-        inactiveBulletColor: Color.fromARGB(77, 67, 57, 57),
-        buttonColor: Color.fromARGB(255, 0, 0, 0),
+        activeBulletColor: Color.fromARGB(255, 255, 255, 255),
+        inactiveBulletColor: Color.fromARGB(77, 226, 226, 226),
+        buttonColor: Color.fromARGB(255, 255, 255, 255),
         skipCallback: () {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(

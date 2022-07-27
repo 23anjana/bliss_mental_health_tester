@@ -1,6 +1,6 @@
 class Survey {
-  String? question;
+  String? ques;
   String? correctAns;
   List<String>? incorrectAns;
-  Survey(this.question, this.correctAns, this.incorrectAns);
+  Survey(this.ques, this.correctAns, this.incorrectAns);
 }

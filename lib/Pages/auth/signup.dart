@@ -23,35 +23,11 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: Stack(
         alignment: Alignment.center,
         children: [
           Container(),
-          Positioned(
-            bottom: -70,
-            left: -70,
-            child: Container(
-              width: 150,
-              height: 150,
-              decoration: BoxDecoration(
-                color: Colors.purple[100],
-                shape: BoxShape.circle,
-              ),
-            ),
-          ),
-          Positioned(
-            top: -70,
-            right: -70,
-            child: Container(
-              width: 150,
-              height: 150,
-              decoration: BoxDecoration(
-                color: Colors.purple[100],
-                shape: BoxShape.circle,
-              ),
-            ),
-          ),
           Positioned.fill(
             child: ListView(
               children: [
@@ -61,7 +37,7 @@ class _SignupPageState extends State<SignupPage> {
                   padding: const EdgeInsets.only(top: 50.0, left: 5.0),
                   child: Text(
                     "Register",
-                    style: TextStyle(fontFamily: 'Schyler', fontSize: 55, fontWeight: FontWeight.w600),
+                    style: TextStyle(fontFamily: 'Schyler', color: Color.fromARGB(255, 0, 0, 0), fontSize: 55, fontWeight: FontWeight.w600),
                   ),
                 )),
                 Form(
@@ -72,13 +48,16 @@ class _SignupPageState extends State<SignupPage> {
                       children: [
                         const SizedBox(height: 16),
                         TextFormField(
+                          style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                             controller: _emailController,
                             decoration: const InputDecoration(
                               filled: true,
                               hintText: "Email",
                               labelText: "Email",
+                              labelStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                              hintStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                               enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(width: 3, color: primaryBlack),
+                              borderSide: BorderSide(width: 3, color: Color.fromARGB(255, 0, 0, 0)),
       ),
                             ),
                             keyboardType: TextInputType.emailAddress,
@@ -94,13 +73,16 @@ class _SignupPageState extends State<SignupPage> {
                             }),
                         const SizedBox(height: 16),
                         TextFormField(
+                          style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                           controller: _passwordController,
                           decoration: const InputDecoration(
                             filled: true,
                             hintText: "Password",
                             labelText: "Password",
+                            labelStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                            hintStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                             enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 3, color: primaryBlack),
+                            borderSide: BorderSide(width: 3, color: Color.fromARGB(255, 0, 0, 0)),
       ),
                           ),
                           obscureText: true,
@@ -116,7 +98,8 @@ class _SignupPageState extends State<SignupPage> {
                           children: [
                             Expanded(
                               child: ElevatedButton(
-                                child: Text("Sign up"),
+                                style: ElevatedButton.styleFrom(primary: Color.fromARGB(255, 0, 0, 0)),
+                                child: Text("SIGN UP",style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                                 onPressed: () async {
                                   if (_formKey.currentState!.validate()) {
                                     try {
@@ -143,13 +126,13 @@ class _SignupPageState extends State<SignupPage> {
 
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
-                                        content: Text("Account created"),
+                                        content: Text("Account created",style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                                       ));
                                     } catch (e) {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
                                         content:
-                                            Text("Account creation failed"),
+                                            Text("Account creation failed",style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                                       ));
                                     }
                                   }
@@ -181,7 +164,7 @@ class _SignupPageState extends State<SignupPage> {
                           ),
                         );
                       },
-                      child: Text("Already have an account?"),
+                      child: Text("Already have an account?",style: TextStyle(color: Color.fromARGB(255, 0, 0, 0))),
                     ),
                   ],
                 ),

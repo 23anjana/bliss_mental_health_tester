@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ment_track/controllers/surveycontroller.dart';
+import 'package:ment_track/pages/recommend.dart';
 
 class SurveyPage extends StatefulWidget {
   const SurveyPage({Key? key}) : super(key: key);
@@ -18,10 +19,10 @@ class _SurveyPageState extends State<SurveyPage> {
         children: [
           Container(
             decoration: const BoxDecoration(
-              gradient: LinearGradient(colors: [
-                Colors.deepPurple,
-                Colors.deepPurpleAccent,
-              ]),
+              image: DecorationImage(
+                repeat: ImageRepeat.repeat,
+          image: AssetImage("assets/bg.png"),
+      ),
             ),
           ),
           SafeArea(
@@ -38,10 +39,12 @@ class _SurveyPageState extends State<SurveyPage> {
                   itemCount: questions.length,
                   itemBuilder: (_, index) {
                     var randQuestions = [
-                      questions[index]["correct_answer"],
-                      ...questions[index]["incorrect_answers"],
+                      questions[index]["list1"],
+                      questions[index]["list2"],
+                      questions[index]["list3"],
+                      questions[index]["list4"],
                     ];
-                    randQuestions.shuffle();
+                    //randQuestions.shuffle();
 
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,28 +55,22 @@ class _SurveyPageState extends State<SurveyPage> {
                             Text(
                               "Questions ${index + 1}/${questions.length}",
                               style: TextStyle(
-                                fontSize: 24.0,
+                                fontSize: 40.0,
+                                fontFamily: 'Schyler',
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Text(
-                              "${Get.find<SurveyController>().points} points",
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 0, 0, 0),
                               ),
                             ),
                           ],
                         ),
                         Text(
-                          questions[index]["question"],
+                          questions[index]["ques"],
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 24.0,
+                            fontFamily: 'Schyler',
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Color.fromARGB(255, 0, 0, 0),
                           ),
                         ),
                         Column(
@@ -85,63 +82,31 @@ class _SurveyPageState extends State<SurveyPage> {
                                   Expanded(
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                        primary: Colors.transparent,
+                                        primary: Color.fromARGB(255, 255, 255, 255),
                                         elevation: 0,
                                         shape: RoundedRectangleBorder(
                                           side: BorderSide(
-                                            color: Colors.white,
+                                            color: Color.fromARGB(255, 0, 0, 0),
                                           ),
                                         ),
                                       ),
                                       onPressed: () {
-                                        if (questions[index]
-                                                ["correct_answer"] ==
-                                            randQuestions[index2]) {
-                                          Get.find<SurveyController>()
-                                                  .score
-                                                  .value +=
-                                              Get.find<SurveyController>().points;
-                                          print(Get.find<SurveyController>()
-                                              .score
-                                              .value);
-                                        }
+                                        Get.find<SurveyController>()
+                                            .score
+                                            .value += index2;
+                                        print(Get.find<SurveyController>()
+                                            .score
+                                            .value);
+
                                         var i = questionsPageController.page!
                                                 .round() +
                                             1;
                                         if (i >= questions.length) {
-                                          showDialog(
-                                            context: context,
-                                            builder: (_) => AlertDialog(
-                                              content: Text(
-                                                  "Score ${Get.find<SurveyController>().score.value}"),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Text("Cancel"),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () {
-                                                    randQuestions.shuffle();
-                                                    Get.find<SurveyController>()
-                                                        .score(0);
-                                                    questionsPageController
-                                                        .animateToPage(
-                                                      0,
-                                                      duration: Duration(
-                                                        milliseconds: 250,
-                                                      ),
-                                                      curve: Curves.bounceIn,
-                                                    );
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Text("Retry"),
-                                                ),
-                                              ],
-                                            ),
-                                          );
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      SecondScreen()));
                                         } else {
                                           questionsPageController.animateToPage(
                                             i,
@@ -152,7 +117,12 @@ class _SurveyPageState extends State<SurveyPage> {
                                           randQuestions.clear();
                                         }
                                       },
-                                      child: Text(randQuestions[index2]),
+                                      child: Text(randQuestions[index2],style: TextStyle(
+                            fontSize: 20.0,
+                            fontFamily: 'Schyler',
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),),
                                     ),
                                   ),
                                 ],

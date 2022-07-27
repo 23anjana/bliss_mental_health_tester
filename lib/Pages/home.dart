@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'home/survey_category_card.dart';
-import 'home/survey_search.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,30 +15,39 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List SurveyImages = ["Progress","Progress","Progress","Progress","Progress"];
+  List SurveyImages = ["cat1b","cat2","cat3","cat4","cat6","cat5"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color.fromARGB(255, 95, 49, 174),Color.fromARGB(255, 53, 29, 119),]
-              ),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(colors: [
+                Color.fromARGB(255, 255, 255, 255),
+                Color.fromARGB(255, 255, 255, 255),
+              ]),
             ),
           ),
           SafeArea(
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SurveySearchView(),
+                  Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                  padding: const EdgeInsets.only(top: 20.0, left: 15.0),
+                  child: Text(
+                    "Choose a Category",
+                    style: TextStyle(fontFamily: 'Schyler', color: Color.fromARGB(255, 0, 0, 0), fontSize: 25, fontWeight: FontWeight.w600),
+                  ),
+                )),
                   Obx(
                     ()
                     {
                       var categories = Get.find<SurveyController>().categories;
                       return Container(
-                          padding:  EdgeInsets.symmetric(horizontal: 16),
+                          padding:  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                           child: ListView.builder(
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),

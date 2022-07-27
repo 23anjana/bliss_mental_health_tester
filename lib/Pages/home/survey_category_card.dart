@@ -35,25 +35,25 @@ class SurveyCategoryCard extends StatelessWidget {
               Container(
                 height: 200,
                 decoration: BoxDecoration(
-                  color: Colors.black45,
+                  color: Colors.black12,
                   image: DecorationImage(
                     image: AssetImage("assets/"+image+".png")
                   ),
                 ),
               ),
               Positioned(
-                bottom: 0,
+                bottom: 7,
                 left: 0,
                 right: 0,
                 child: Container(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Colors.transparent,
-                        Colors.black,
+                        Color.fromARGB(100, 255, 255, 255),
+                        Color.fromARGB(100, 255, 255, 255),
                       ]
                     ),
                   ),
@@ -64,26 +64,11 @@ class SurveyCategoryCard extends StatelessWidget {
                         category.name!,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 24.0,
+                          color: Color.fromARGB(255, 8, 8, 8),
+                          fontFamily: 'Schyler',
+                          fontSize: 20.0,
                         ),
-                      ),
-                      SizedBox(height: 8),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.green,
-                        ),
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                        child: Text(
-                          category.difficulity!,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 12.0,
-                          ),
-                        ),
-                      ),
+                      ),                      
                     ],
                   ),
                 ),

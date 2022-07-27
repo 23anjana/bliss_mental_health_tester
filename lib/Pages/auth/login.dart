@@ -25,35 +25,11 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: Stack(
         alignment: Alignment.center,
         children: [
           Container(),
-          Positioned(
-            bottom: -70,
-            left: -70,
-            child: Container(
-              width: 150,
-              height: 150,
-              decoration: BoxDecoration(
-                color: Colors.purple[100],
-                shape: BoxShape.circle,
-              ),
-            ),
-          ),
-          Positioned(
-            top: -70,
-            right: -70,
-            child: Container(
-              width: 150,
-              height: 150,
-              decoration: BoxDecoration(
-                color: Colors.purple[100],
-                shape: BoxShape.circle,
-              ),
-            ),
-          ),
           Positioned.fill(
             child: ListView(
               children: [
@@ -63,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.only(top: 50.0, left: 5.0),
                   child: Text(
                     "Log in",
-                    style: TextStyle(fontFamily: 'Schyler', fontSize: 55, fontWeight: FontWeight.w600),
+                    style: TextStyle(fontFamily: 'Schyler', color: Color.fromARGB(255, 0, 0, 0), fontSize: 55, fontWeight: FontWeight.w600),
                   ),
                 )),
                 Form(
@@ -74,13 +50,16 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         const SizedBox(height: 16),
                         TextFormField(
+                          style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                             controller: _emailController,
                             decoration: const InputDecoration(
                               filled: true,
                               hintText: "Email",
-                              labelText: "Email",
+                              //labelText: "Email",
+                              labelStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                              hintStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                               enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(width: 3, color: primaryBlack),
+                              borderSide: BorderSide(width: 3, color: Color.fromARGB(255, 0, 0, 0)),
       ),
                             ),
                             keyboardType: TextInputType.emailAddress,
@@ -96,13 +75,16 @@ class _LoginPageState extends State<LoginPage> {
                             }),
                         const SizedBox(height: 16),
                         TextFormField(
+                          style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                           controller: _passwordController,
                           decoration: const InputDecoration(
                             filled: true,
                             hintText: "Password",
                             labelText: "Password",
+                            labelStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                              hintStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                             enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 3, color: primaryBlack)),
+                            borderSide: BorderSide(width: 3, color: Color.fromARGB(255, 0, 0, 0))),
                           ),
                           obscureText: true,
                           validator: (value) {
@@ -118,13 +100,14 @@ class _LoginPageState extends State<LoginPage> {
                           children: [
                             TextButton(
                                 onPressed: () {},
-                                child: Text("Forgot Password?")),
+                                child: Text("Forgot Password?",style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)))),
                           ],
                         ),
                         Row(
                           children: [
                             Expanded(
                               child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(primary: Color.fromARGB(255, 0, 0, 0)),
                                 child: Text("LOG IN",style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                                 onPressed: () async {
                                   if (_formKey.currentState!.validate()) {
@@ -154,14 +137,14 @@ class _LoginPageState extends State<LoginPage> {
 
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(SnackBar(
-                                          content: Text("Login Successful"),
+                                          content: Text("Login Successful",style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                                         ));
                                       }
                                     } catch (e) {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content: Text("Login Failed"),
+                                          content: Text("Login Failed",style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                                         ),
                                       );
                                     }
@@ -213,14 +196,14 @@ class _LoginPageState extends State<LoginPage> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content: Text("Login Successful"),
+                                          content: Text("Login Successful",style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                                         ),
                                       );
                                     }
                                   } catch (e) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                        content: Text("Login Failed"),
+                                        content: Text("Login Failed",style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                                       ),
                                     );
                                   }
@@ -253,7 +236,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         );
                       },
-                      child: Text("Don't have an account? Sign up"),
+                      child: Text("Don't have an account? Sign up",style: TextStyle(color: Color.fromARGB(255, 0, 0, 0))),
                     ),
                   ],
                 ),
